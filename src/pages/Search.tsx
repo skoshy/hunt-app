@@ -1,12 +1,7 @@
 import React from 'react';
-import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { MainLayout } from 'src/layouts/MainLayout';
 
 export const SearchPage = () => (
-  <IonPage>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>Search</IonTitle>
-      </IonToolbar>
-    </IonHeader>
-  </IonPage>
+  <MainLayout title="Search">
+  </MainLayout>
 );

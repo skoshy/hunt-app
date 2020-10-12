@@ -1,12 +1,7 @@
 import React from 'react';
-import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { MainLayout } from 'src/layouts/MainLayout';
 
 export const TrendingPage = () => (
-  <IonPage>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>Trending</IonTitle>
-      </IonToolbar>
-    </IonHeader>
-  </IonPage>
+  <MainLayout title="Trending">
+  </MainLayout>
 );
