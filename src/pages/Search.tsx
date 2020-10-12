@@ -1,11 +1,11 @@
 import React from 'react';
 import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-export const HomePage = () => (
+export const SearchPage = () => (
   <IonPage>
     <IonHeader>
       <IonToolbar>
-        <IonTitle>Hunt</IonTitle>
+        <IonTitle>Search</IonTitle>
       </IonToolbar>
     </IonHeader>
   </IonPage>

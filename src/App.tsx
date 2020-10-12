@@ -1,8 +1,13 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { createOutline, listCircleOutline, personCircleOutline, searchOutline, trendingUpOutline } from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { HomePage } from './pages/Home';
+import { TrendingPage } from './pages/Trending';
+import { ProfilePage } from './pages/Profile';
+import { SearchPage } from './pages/Search';
+import { SubmitPage } from './pages/Submit';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,13 +28,64 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+const pages = [
+  {
+    name: 'home',
+    title: 'Hunt',
+    href: '/home',
+    component: HomePage,
+    icon: listCircleOutline,
+  },
+  {
+    name: 'trending',
+    title: 'Trending',
+    href: '/trending',
+    component: TrendingPage,
+    icon: trendingUpOutline,
+  },
+  {
+    name: 'submit',
+    title: 'Submit',
+    href: '/submit',
+    component: SubmitPage,
+    icon: createOutline,
+  },
+  {
+    name: 'search',
+    title: 'Search',
+    href: '/search',
+    component: SearchPage,
+    icon: searchOutline,
+  },
+  {
+    name: 'profile',
+    title: 'Profile',
+    href: '/profile',
+    component: ProfilePage,
+    icon: personCircleOutline,
+  },
+];
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
+          {pages.map(page => (
+            <Route path={page.href} component={page.component} />
+          ))}
+          <Route render={() => <Redirect to="/home" />} />
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          {pages.map(page => (
+            <IonTabButton tab={page.name} href={page.href}>
+              <IonIcon icon={page.icon}></IonIcon>
+              <IonLabel>{page.title}</IonLabel>
+            </IonTabButton>
+          ))}
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
